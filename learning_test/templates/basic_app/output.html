@@ -1,0 +1,62 @@
+{% extends "basic_app/base.html" %}
+
+{% load static%}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static "basic_app/css/output.css" %}"/>
+
+
+
+<div class="jumbotron">
+
+    <h1>hello</h1>
+
+    
+
+
+
+    <div class = "django">
+        {% if servicename %}
+
+        {{ results }}
+
+        <table>
+            <thead>
+                <th>Service id</th>
+                <th>service</th>
+                <th>communication</th>
+                <th>things</th>
+                <th>diraction</th>
+            </thead>
+
+            {% for service in servicename %}
+
+            <tr>
+                <td>{{ service.auto_project_id }}</td>
+                <td>{{ service.servicename }}</td>
+                <td>{{ service.communication_text }}</td>
+                <td>{{ service.things_text }}</td>
+                <td>{{ service.direction}}</td>
+
+                
+    
+            </tr>
+    
+            {% endfor %}
+        </table>
+
+        {% else %}
+
+        <p>no service deatails</p>
+
+        {% endif %}
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

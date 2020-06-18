@@ -1,0 +1,31 @@
+{% extends "basic_app/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static "basic_app/css/projectstyle.css" %}"/>
+
+
+    <div class="jumbotron">
+
+        <h1>choose new for creating new project or choose old for load existing project</h1>
+        <div class="projectpage">
+
+            {% csrf_token %}
+
+            <a id="first"  href="{% url 'basic_app:service' %}" >new</a>
+            
+
+            <a id="second" href="{% url 'basic_app:exist' %}">old</a>
+
+            <a id="third" href="{% url 'basic_app:search' %}">search</a>
+
+
+            
+        </div>
+    </div>
+
+
+{% endblock %}

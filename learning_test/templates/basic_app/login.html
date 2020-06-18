@@ -1,0 +1,46 @@
+{% extends "basic_app/base.html" %}
+
+{% load static %}
+<!-- 
+{% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "basic_app/css/mystyle.css" %}">
+
+{% endblock %} -->
+
+
+  
+    {% block content %}
+    
+
+    <img class="avatar" src="{% static "basic_app/images/loginavatar.jpg" %}" >
+
+    <link rel="stylesheet" href="{% static "basic_app/css/mystyle.css" %}"/> 
+
+    <div class="jumbotron">
+
+        <h1>please login</h1>
+        <form action="{% url 'basic_app:user_login'%}" method="POST">
+            {% csrf_token %}
+            <label for="username" style="color: black;">username</label>
+            <input type="text" name="username" >
+
+            <label for="password" style="color: black;">password</label>
+            <input type="password" name= "password">
+
+            <input type="submit" value="login">
+
+            <a href="#">forgot password</a>
+
+        </form>
+
+    </div>
+
+
+    {% endblock %}
+
+
+
+
+
+

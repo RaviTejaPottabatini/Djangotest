@@ -1,0 +1,72 @@
+{% extends "basic_app/base.html" %}
+
+{% load static%}
+
+{% block content %}
+
+<div class="container">
+    <h1>search bar</h1>
+    <form action="{% url 'basic_app:search'%}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="col-lg-5">
+                <input type="text" name="servicename" class="form-control" placeholder="enter">
+
+            </div>
+            <label class="col-lg-2"></label>
+            <button type="submit" class="btn btn-danger">search</button>
+        </div>
+    </form><br><br>
+
+    <div>
+        {% if messages %}
+            <ul class="messages">
+                {% for k in messages %}
+                <li style="color: red;">{{ k }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div><br>
+    <div style="color: blue;">
+
+        {% if servicematch %}
+            {% for service in servicematch %}
+            <table border="0px" width ="300px">
+                <tr>
+                    <td>id</td>
+                    <td>{{ service.auto_project_id }}</td>
+                </tr>
+                <tr>
+                    <td>service_name</td>
+                    <td>{{ service.servicename }}</td>
+                </tr>
+                <tr>
+                    <td>communication</td>
+                    <td>{{ service.communication_text }}</td>
+                </tr>
+                <tr>
+                    <td>things</td>
+                    <td>{{ service.things_text }}</td>
+                </tr>
+                <tr>
+                    <td>diraction</td>
+                    <td>{{ service.direction}}</td>
+                </tr>
+                <tr>
+                    <td>child</td>
+                    <td>{{ service.child }}</td>
+                </tr>
+                <tr>
+                    <td>parent</td>
+                    <td>{{ service.parent }}</td>
+                </tr>
+            </table>
+
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% endblock %}

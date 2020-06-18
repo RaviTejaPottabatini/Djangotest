@@ -1,0 +1,38 @@
+{% extends "basic_app/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="jumbotron">
+            {% if formfilled %}
+                <h1> thank you</h1>
+
+            {% else %}
+                <h2>fill the service form</h2>
+
+                <form action = "{% url 'basic_app:service' %}" method= "POST">
+                    {% csrf_token %}
+                    {{ service_form.as_p }}
+                    <!-- {{ diretion_form.as_p }} -->
+                    <!-- <label for="servicename">service name</label>
+                    <input type="text" name = "servicename" >
+                    <label for="communication">communication</label>
+                    <textarea name="communication"  cols="30" rows="10">fill here</textarea>
+                    <label for="things">things</label>
+                    <textarea name="things"  cols="30" rows="10">fill here</textarea> -->
+
+
+                    <input type="submit" name="" value="save">
+
+                </form>
+
+            {% endif  %}
+
+        </div>
+
+    </div>
+
+    {% endblock %}
